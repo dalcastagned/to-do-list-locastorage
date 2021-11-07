@@ -1,0 +1,59 @@
+</body>
+
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>To Do List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./img/favicon.ico">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <section class="header">
+            <!-- title -->
+            <div class="title">
+                <h1>TO-DO List</h1>
+                <!-- clear local storage button -->
+                <i class="clear material-icons">autorenew</i>
+            </div>
+            <!-- statistics -->
+            <ul class="statistics">
+                <li>
+                    <p>Total</p>
+                    <span id="totalStatistic">0</span>
+                </li>
+                <li>
+                    <p>Feitas</p>
+                    <span id="completeStatistic">0</span>
+                </li>
+                <li>
+                    <p>Restam</p>
+                    <span id="remainingStatistic">0</span>
+                </li>
+            </ul>
+        </section>
+        <!-- write and add task -->
+        <section class="addToDo">
+            <input type="text" id="input" placeholder="Adicionar uma tarefa" maxlength="100">
+            <i class="addBtn material-icons" onclick="addList()">add_circle</i>
+        </section>
+        <!-- tasks -->
+        <section class="content">
+            <ul id="list"></ul>
+        </section>
+    </div>
+    <footer>
+        <p>© 2021 Copyright - Daniel Dalcastagne</p>
+    </footer>
+    
+<script defer src="./js/script.js"></script>
+
+</body>
+</html>
