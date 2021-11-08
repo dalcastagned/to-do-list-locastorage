@@ -91,18 +91,18 @@ function addToDO(toDo, id, done) {
 	var item = `
 		<li class="item">
 			<i class="material-icons checkBtn ${CHECKED}" onclick="completeToDo(${id})" id="${id}">${DONE}</i>
-			<p class="text ${LINE}">${toDo}</p>
-			<div class = "containerTrash">
-			<i class="material-icons trashBtn " onclick="popup(${id})" id="trashBtn${id}">delete</i>
+			<p class="text ${LINE}" onclick="completeToDo(${id})">${toDo}</p>
+			<div class="containerTrash">
+			<i class="material-icons trashBtn" onclick="popup(${id})" id="trashBtn${id}">delete</i>
 			</div>
-			<div class = "popup" id="popup${id}">
+			<div class="popup" id="popup${id}">
 				<span class="popuptext" id="myPopup${id}">Tem certeza?
 					<div>
 						<button class="material-icons trashAccepted" onclick="removeToDo(${id})">done</button>
 						<button class="material-icons trashCancel" onclick="popup(${id})">close</button>
 					</div>
 				</span>
-				</div>
+			</div>
 		</li>`;
 
 	document.getElementById('list').insertAdjacentHTML("beforeend", item);
