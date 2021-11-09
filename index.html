@@ -21,7 +21,16 @@
             <div class="title">
                 <h1>TO-DO List</h1>
                 <!-- clear local storage button -->
-                <i class="clear material-icons">autorenew</i>
+                <i class="clear material-icons" id="clearBtn" onclick="popupClearAll()">delete_sweep</i>
+                <!--Popup Clear All-->
+                <div class="popupClearAll" id="popupClearAll">
+                    <span class="popuptextClearAll" id="myPopupClearAll">Apagar Tudo?
+                        <div>
+                            <button class="material-icons trashAccepted" onclick="clearAll()">done</button>
+                            <button class="material-icons trashCancel" onclick="popupClearAll()">close</button>
+                        </div>
+                    </span>
+                </div>
             </div>
             <!-- statistics -->
             <ul class="statistics">
@@ -52,8 +61,9 @@
     <footer>
         <p>© 2021 Copyright - Daniel Dalcastagne</p>
     </footer>
-    
-<script defer src="./js/script.js"></script>
+
+    <script defer src="./js/script.js"></script>
 
 </body>
+
 </html>

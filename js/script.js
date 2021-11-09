@@ -18,11 +18,25 @@ function statistics() {
 	completeStatistic.innerHTML = complete;
 }
 
+//function that opens the confirmation popup for clear all
+function popupClearAll() {
+	var myPopupClearAll = document.getElementById("myPopupClearAll");
+	var completeStatistic = document.getElementById("completeStatistic");
+	var popupClearAll = document.getElementById("popupClearAll")
+
+	var coordenadas = completeStatistic.getBoundingClientRect();
+
+	popupClearAll.style.top = coordenadas.top
+	popupClearAll.style.left = coordenadas.left
+
+	myPopupClearAll.classList.toggle("show");
+}
+
 //function to clear all localstorage
-clear.addEventListener('click', function () {
+function clearAll() {
 	localStorage.clear();
 	location.reload();
-});
+};
 
 let list = [],
 	id = 0;
@@ -55,7 +69,7 @@ if (lastArray == undefined) {
 
 //check if enter was pressed to add task
 document.addEventListener('keyup', function (event) {
-	if (event.code === "Enter") {
+	if (event.code === "Enter" || event.code === "NumpadEnter") {
 		addList();
 	}
 });
