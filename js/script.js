@@ -1,4 +1,3 @@
-var clear = document.querySelector('.clear');
 var input = document.getElementById('input');
 var checkIcon = "check_circle";
 var uncheckIcon = "radio_button_unchecked";
@@ -101,11 +100,14 @@ function addToDO(toDo, id, done) {
 	var DONE = done ? checkIcon : uncheckIcon;
 	var LINE = done ? lineThrough : '';
 	var CHECKED = done ? 'checked' : '';
+	var CONTENTEDIT = done ? false : true;
 
 	var item = `
 		<li class="item">
 			<i class="material-icons checkBtn ${CHECKED}" onclick="completeToDo(${id})" id="${id}">${DONE}</i>
-			<p class="text ${LINE}" onclick="completeToDo(${id})">${toDo}</p>
+			<div>
+				<p class="text ${LINE}" onfocusout="makeChanges(${id})" id="text${id}" contenteditable="${CONTENTEDIT}" onkeypress="return characterLimit(${id})" onpaste="return false">${toDo}</p>
+			</div>
 			<div class="containerTrash">
 			<i class="material-icons trashBtn" onclick="popup(${id})" id="trashBtn${id}">delete</i>
 			</div>
@@ -141,6 +143,7 @@ function completeToDo(id) {
 	var element = document.getElementById(id)
 	let currentArray = list.find(checkArray)
 	var check = document.getElementById(element.id).innerHTML;
+	var text = document.getElementById('text'+id)
 
 	function checkArray(currentArray) {
 		return currentArray.id === id
@@ -151,6 +154,7 @@ function completeToDo(id) {
 		currentArray.done = false;
 		element.parentNode.querySelector('.checkBtn').classList = "material-icons checkBtn";
 		element.parentNode.querySelector('.text').classList = "text";
+		text.contentEditable = true;
 		complete--;
 		statistics();
 	} else {
@@ -158,6 +162,7 @@ function completeToDo(id) {
 		currentArray.done = true;
 		element.parentNode.querySelector('.checkBtn').classList = "material-icons checkBtn checked";
 		element.parentNode.querySelector('.text').classList = "text lineThrough";
+		text.contentEditable = false;
 		complete++;
 		statistics();
 	}
@@ -184,4 +189,23 @@ function removeToDo(id) {
 
 	total--;
 	statistics();
+}
+
+//function to save task change
+function makeChanges(id){
+	var text = document.getElementById('text'+id)
+	let currentArray = list.find(checkArray)
+
+	function checkArray(currentArray) {
+		return currentArray.id === id
+	}
+
+	currentArray.name = text.innerHTML;
+
+	localStorage.setItem('toDoList', JSON.stringify(list));
+}
+
+//function to limit characters of task change
+function characterLimit(id) {
+	return (document.getElementById('text'+id).innerText.length < 99)
 }

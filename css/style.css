@@ -276,13 +276,17 @@ body {
     border-bottom: 1px solid #0D0D0D;
     border-bottom-style: dotted;
     font-size: 16px;
-    cursor: pointer;
     user-select: none; /* supported by Chrome and Opera */
     -webkit-user-select: none; /* Safari */
     -khtml-user-select: none; /* Konqueror HTML */
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* Internet Explorer/Edge */
     -webkit-tap-highlight-color: transparent;
+}
+
+.text:focus {
+    outline: 0;
+    color: #404040;
 }
 
 /*popup style*/
