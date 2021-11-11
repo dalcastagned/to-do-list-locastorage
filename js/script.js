@@ -23,10 +23,10 @@ function popupClearAll() {
 	var completeStatistic = document.getElementById("completeStatistic");
 	var popupClearAll = document.getElementById("popupClearAll")
 
-	var coordenadas = completeStatistic.getBoundingClientRect();
+	var coordinates = completeStatistic.getBoundingClientRect();
 
-	popupClearAll.style.top = coordenadas.top
-	popupClearAll.style.left = coordenadas.left
+	popupClearAll.style.top = coordinates.top
+	popupClearAll.style.left = coordinates.left
 
 	myPopupClearAll.classList.toggle("show");
 }
@@ -130,10 +130,10 @@ function popup(id) {
 	var trashBtn = document.getElementById("trashBtn"+id);
 	var popup = document.getElementById("popup"+id)
 
-	var coordenadas = trashBtn.getBoundingClientRect();
+	var coordinates = trashBtn.getBoundingClientRect();
 
-	popup.style.top = coordenadas.top
-	popup.style.left = coordenadas.left
+	popup.style.top = coordinates.top
+	popup.style.left = coordinates.left
 
 	myPopup.classList.toggle("show");
 }
