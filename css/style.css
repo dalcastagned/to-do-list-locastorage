@@ -286,7 +286,7 @@ body {
 
 .text:focus {
     outline: 0;
-    color: #404040;
+    opacity: 0.8;
 }
 
 /*popup style*/
