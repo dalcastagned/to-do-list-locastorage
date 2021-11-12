@@ -68,7 +68,7 @@ if (lastArray == undefined) {
 
 //check if enter was pressed to add task
 document.addEventListener('keyup', function (event) {
-	if (event.code === "Enter" || event.code === "NumpadEnter") {
+	if (event.code === "Enter" || event.code === "NumpadEnter" || event.keyCode ==13) {
 		addList();
 	}
 });
