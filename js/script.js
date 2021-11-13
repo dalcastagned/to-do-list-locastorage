@@ -68,7 +68,7 @@ if (lastArray == undefined) {
 
 //check if enter was pressed to add task
 document.addEventListener('keyup', function (event) {
-	if (event.code === "Enter" || event.code === "NumpadEnter" || event.keyCode ==13) {
+	if (event.code === "Enter" || event.code === "NumpadEnter" || event.keyCode == 13) {
 		addList();
 	}
 });
@@ -100,7 +100,15 @@ function addToDO(toDo, id, done) {
 	var DONE = done ? checkIcon : uncheckIcon;
 	var LINE = done ? lineThrough : '';
 	var CHECKED = done ? 'checked' : '';
-	var CONTENTEDIT = done ? false : true;
+	var CONTENTEDIT = false
+
+	if (navigator.userAgent.indexOf("Chrome") != -1) {
+		CONTENTEDIT = false
+	}
+
+	else {
+		CONTENTEDIT = done ? false : true;
+	}
 
 	var item = `
 		<li class="item">
@@ -126,9 +134,9 @@ function addToDO(toDo, id, done) {
 
 //function that opens the confirmation popup for task deletion
 function popup(id) {
-	var myPopup = document.getElementById("myPopup"+id);
-	var trashBtn = document.getElementById("trashBtn"+id);
-	var popup = document.getElementById("popup"+id)
+	var myPopup = document.getElementById("myPopup" + id);
+	var trashBtn = document.getElementById("trashBtn" + id);
+	var popup = document.getElementById("popup" + id)
 
 	var coordinates = trashBtn.getBoundingClientRect();
 
@@ -143,7 +151,7 @@ function completeToDo(id) {
 	var element = document.getElementById(id)
 	let currentArray = list.find(checkArray)
 	var check = document.getElementById(element.id).innerHTML;
-	var text = document.getElementById('text'+id)
+	var text = document.getElementById('text' + id)
 
 	function checkArray(currentArray) {
 		return currentArray.id === id
@@ -154,7 +162,13 @@ function completeToDo(id) {
 		currentArray.done = false;
 		element.parentNode.querySelector('.checkBtn').classList = "material-icons checkBtn";
 		element.parentNode.querySelector('.text').classList = "text";
-		text.contentEditable = true;
+
+		if (navigator.userAgent.indexOf("Safari") != -1) {
+			text.contentEditable = false;
+		} else {
+			text.contentEditable = true;
+		}
+
 		complete--;
 		statistics();
 	} else {
@@ -192,8 +206,8 @@ function removeToDo(id) {
 }
 
 //function to save task change
-function makeChanges(id){
-	var text = document.getElementById('text'+id)
+function makeChanges(id) {
+	var text = document.getElementById('text' + id)
 	let currentArray = list.find(checkArray)
 
 	function checkArray(currentArray) {
@@ -207,5 +221,5 @@ function makeChanges(id){
 
 //function to limit characters of task change
 function characterLimit(id) {
-	return (document.getElementById('text'+id).innerText.length < 99)
+	return (document.getElementById('text' + id).innerText.length < 99)
 }
