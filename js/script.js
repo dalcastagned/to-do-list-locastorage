@@ -100,17 +100,7 @@ function addToDO(toDo, id, done) {
 	var DONE = done ? checkIcon : uncheckIcon;
 	var LINE = done ? lineThrough : '';
 	var CHECKED = done ? 'checked' : '';
-	var CONTENTEDIT
-
-
-	if (navigator.userAgent.indexOf("Chrome") != -1) {
-		CONTENTEDIT = done ? false : true;
-	}
-	else if (navigator.userAgent.indexOf("Safari") != -1) {
-		CONTENTEDIT = false
-	} else {
-		CONTENTEDIT = done ? false : true;
-	}
+	var CONTENTEDIT = done ? false : true;
 
 	var item = `
 		<li class="item">
@@ -164,16 +154,7 @@ function completeToDo(id) {
 		currentArray.done = false;
 		element.parentNode.querySelector('.checkBtn').classList = "material-icons checkBtn";
 		element.parentNode.querySelector('.text').classList = "text";
-
-		if (navigator.userAgent.indexOf("Chrome") != -1) {
-			text.contentEditable = true;
-		}
-		else if (navigator.userAgent.indexOf("Safari") != -1) {
-			text.contentEditable = false;
-		} else {
-			text.contentEditable = true;
-		}
-
+		text.contentEditable = true;
 		complete--;
 		statistics();
 	} else {
